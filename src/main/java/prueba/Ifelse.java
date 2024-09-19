@@ -12,21 +12,21 @@ public class Ifelse {
 		Servicio servicio = new Servicio();
 
 		System.out.println("¿Que opción deseas?");
-		System.out.println("Alta");
-		System.out.println("Baja");
-		System.out.println("Modificación");
-		System.out.println("Consulta");
+		System.out.println("1. Alta");
+		System.out.println("2. Baja");
+		System.out.println("3. Modificación");
+		System.out.println("4. Consulta");
 		String opc = null;
+		Alumno a = new Alumno();
 		try {
 			opc = br.readLine();
 
-			if (opc.equals("Alta")) {
-				System.out.println("Has escogido alta");
-				Alumno a = new Alumno();
+			if (opc.equals("1")) {
+				System.out.println("Dar de alta a un alumno/a");
+				
 				System.out.println("Nombre: ");
 				String nombre;
 				nombre = br.readLine();
-
 				a.setNombre(nombre);
 				System.out.println("DNI:");
 				String dni = br.readLine();
@@ -35,11 +35,25 @@ public class Ifelse {
 				int edad = Integer.parseInt(br.readLine());
 				a.setEdat(edad);
 				servicio.alta(a);
-			} else if (opc.equals("Baja")) {
-				System.out.println("Has escogido baja");
-			} else if (opc.equals("Edad")) {
-				System.out.println("Has escogido Modificación");
-			} else if (opc.equals("Nombre")) {
+				System.out.println("Se ha añadido correctamente");
+				
+			} else if (opc.equals("2")) {
+				System.out.println("Dar de baja a un alumno/a");
+				System.out.println("DNI:");
+				String dni = br.readLine();
+				a.setDni(dni);
+				servicio.baja(a);
+				System.out.println("Se ha eliminado correctamente");
+				System.out.println("");
+			} else if (opc.equals("3")) {
+				System.out.println("Modificar datos de un alumno/a");
+				System.out.println("Escribe el número de DNI: ");
+				String oldDni = br.readLine();
+				System.out.println("Escribe el nuevo número de DNI: ");
+				String Ndni = br.readLine();
+;				a.setDni(Ndni);
+				servicio.Modicar(oldDni, a);
+			} else if (opc.equals("4")) {
 				System.out.println("Has escogido Consulta");
 			}
 		} catch (IOException e) {
